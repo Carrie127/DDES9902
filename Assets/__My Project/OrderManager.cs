@@ -9,9 +9,9 @@ public class OrderManager : MonoBehaviour
 
     string[] orders =
     {
-        "Order #101\n\n1 Latte\n1 Cappuccino\n\nTakeaway",
+        "Order #101\n\n1 Latte\n1 Cappuccino\n\nDine In",
         "Order #102\n\n1 Flat White\n\nDine In",
-        "Order #103\n\n1 Espresso\n1 Latte\n\nTakeaway"
+        "Order #103\n\n1 Espresso\n1 Latte\n\nDine In"
     };
 
     void Start()

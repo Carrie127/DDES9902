@@ -126,7 +126,6 @@ GameObject:
   - component: {fileID: 2148995808314621912}
   - component: {fileID: 6867662987387628520}
   - component: {fileID: 5417037617313022465}
-  - component: {fileID: 792896714854550783}
   m_Layer: 0
   m_Name: CupTray
   m_TagString: Untagged
@@ -227,19 +226,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &792896714854550783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1658675004929976447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b21dfb51df3042e42a7fadaf8d01a765, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CupDetector
-  hasCup: 0
 --- !u!1 &4230175789897760090
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,7 +955,6 @@ GameObject:
   - component: {fileID: 4383321016678815013}
   - component: {fileID: 1344345295427343542}
   - component: {fileID: 8385407156225957106}
-  - component: {fileID: 2968045978554392611}
   m_Layer: 0
   m_Name: BrewButton
   m_TagString: Untagged
@@ -1072,19 +1057,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &2968045978554392611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8823437993362915285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a648114d620e734299f65cb64abe7a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BrewButton
-  cupDetector: {fileID: 792896714854550783}
 --- !u!1 &9026677373027246137
 GameObject:
   m_ObjectHideFlags: 0
@@ -1094,7 +1066,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 556288504198480363}
-  - component: {fileID: 2984287565531690246}
   m_Layer: 0
   m_Name: CoffeeMachine
   m_TagString: Untagged
@@ -1122,20 +1093,6 @@ Transform:
   - {fileID: 895665325077246616}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2984287565531690246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9026677373027246137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 427a7ea924b18ac42b6a7b7899007a30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CoffeeMachine
-  cupPrefab: {fileID: 0}
-  spawnPoint: {fileID: 3406496048909545512}
 --- !u!1 &9148909626504581113
 GameObject:
   m_ObjectHideFlags: 0
