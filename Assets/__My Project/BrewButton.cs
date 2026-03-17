@@ -3,15 +3,20 @@ using System.Collections;
 
 public class BrewButton : MonoBehaviour
 {
+    [Header("References")]
     public CupDetector cupDetector;
+    public FloatingTextFade coffeeReadyEffect;
+
+    [Header("Settings")]
     public float brewTime = 3f;
+
     private bool isBrewing = false;
 
     private Renderer buttonRenderer;
     private Color originalColor;
 
-    // 更像现实设备的暖色提示，不要太鲜艳
-    private Color brewingColor = new Color(0.95f, 0.75f, 0.35f);
+    // 柔和一点的“工作中”颜色，更像设备状态提示
+    private Color brewingColor = new Color(0.9f, 0.75f, 0.5f);
 
     void Start()
     {
@@ -53,7 +58,7 @@ public class BrewButton : MonoBehaviour
         isBrewing = true;
         Debug.Log("Brewing coffee...");
 
-        // 开始制作：按钮变成柔和暖色
+        // 按钮进入“工作状态”
         if (buttonRenderer != null)
         {
             buttonRenderer.material.color = brewingColor;
@@ -64,10 +69,16 @@ public class BrewButton : MonoBehaviour
         Debug.Log("Coffee ready!");
         Debug.Log("Order complete!");
 
-        // 完成后恢复原色
+        // 按钮恢复原色
         if (buttonRenderer != null)
         {
             buttonRenderer.material.color = originalColor;
+        }
+
+        // 播放 Coffee Ready 提示动画
+        if (coffeeReadyEffect != null)
+        {
+            coffeeReadyEffect.Play();
         }
 
         isBrewing = false;
