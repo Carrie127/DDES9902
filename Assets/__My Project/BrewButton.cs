@@ -6,25 +6,25 @@ public class BrewButton : MonoBehaviour
     [Header("References")]
     public CupDetector cupDetector;
     public FloatingTextFade coffeeReadyEffect;
+    public Renderer machineIndicator;
+    public PickupArea pickupArea;
 
-    [Header("Settings")]
-    public float brewTime = 3f;
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip brewingSound;
+    public AudioClip readySound;
+
+    [Header("Timing")]
+    public float brewTime = 17f;
 
     private bool isBrewing = false;
-
-    private Renderer buttonRenderer;
     private Color originalColor;
-
-    // 柔和一点的“工作中”颜色，更像设备状态提示
-    private Color brewingColor = new Color(0.9f, 0.75f, 0.5f);
 
     void Start()
     {
-        buttonRenderer = GetComponent<Renderer>();
-
-        if (buttonRenderer != null)
+        if (machineIndicator != null)
         {
-            originalColor = buttonRenderer.material.color;
+            originalColor = machineIndicator.material.color;
         }
     }
 
@@ -38,47 +38,71 @@ public class BrewButton : MonoBehaviour
 
     public void Brew()
     {
-        if (isBrewing)
-        {
-            Debug.Log("Already brewing...");
-            return;
-        }
+        if (isBrewing) return;
 
-        if (cupDetector == null || !cupDetector.hasCup)
+        if (cupDetector != null && cupDetector.hasCup)
         {
-            Debug.Log("No cup!");
-            return;
+            StartCoroutine(BrewProcess());
         }
-
-        StartCoroutine(BrewProcess());
+        else
+        {
+            Debug.Log("No cup detected.");
+        }
     }
 
     IEnumerator BrewProcess()
     {
         isBrewing = true;
+
         Debug.Log("Brewing coffee...");
 
-        // 按钮进入“工作状态”
-        if (buttonRenderer != null)
+        // brewing sound
+        if (audioSource != null && brewingSound != null)
         {
-            buttonRenderer.material.color = brewingColor;
+            audioSource.clip = brewingSound;
+            audioSource.Play();
         }
 
+        // machine indicator on
+        if (machineIndicator != null)
+        {
+            machineIndicator.material.color = Color.yellow;
+        }
+
+        // wait brewing time
         yield return new WaitForSeconds(brewTime);
 
-        Debug.Log("Coffee ready!");
-        Debug.Log("Order complete!");
-
-        // 按钮恢复原色
-        if (buttonRenderer != null)
+        // stop brewing sound
+        if (audioSource != null)
         {
-            buttonRenderer.material.color = originalColor;
+            audioSource.Stop();
         }
 
-        // 播放 Coffee Ready 提示动画
+        // ready sound
+        if (audioSource != null && readySound != null)
+        {
+            audioSource.clip = readySound;
+            audioSource.Play();
+        }
+
+        Debug.Log("Coffee ready!");
+
+        // Coffee Ready text effect
         if (coffeeReadyEffect != null)
         {
             coffeeReadyEffect.Play();
+        }
+
+        // Pickup area glow
+        if (pickupArea != null)
+        {
+            pickupArea.SetReady();
+        }
+
+        // machine indicator reset
+        if (machineIndicator != null)
+        {
+            machineIndicator.material.color = originalColor;
         }
 
         isBrewing = false;

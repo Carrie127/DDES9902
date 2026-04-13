@@ -1,32 +1,49 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class OrderManager : MonoBehaviour
 {
-    public TextMeshProUGUI orderText;
+    [Header("Order Screen Text")]
+    public TMP_Text orderText;
 
-    int orderIndex = 0;
+    [Header("Order Timing")]
+    public float orderChangeInterval = 8f;
 
-    string[] orders =
+    private string[] orders =
     {
-        "Order #101\n\n1 Latte\n1 Cappuccino\n\nDine In",
-        "Order #102\n\n1 Flat White\n\nDine In",
-        "Order #103\n\n1 Espresso\n1 Latte\n\nDine In"
+        "Order #101\n1 Latte\nDine-in",
+        "Order #102\n1 Cappuccino\nDine-in",
+        "Order #103\n1 Flat White\nDine-in",
+        "Order #104\n1 Espresso\nTakeaway",
+        "Order #105\n1 Long Black\nDine-in"
     };
 
     void Start()
     {
-        InvokeRepeating("NextOrder", 5f, 8f);
+        StartCoroutine(ChangeOrdersOverTime());
     }
 
-    void NextOrder()
+    IEnumerator ChangeOrdersOverTime()
     {
-        orderText.text = orders[orderIndex];
-        orderIndex++;
-
-        if (orderIndex >= orders.Length)
+        while (true)
         {
-            orderIndex = 0;
+            ShowRandomOrder();
+            yield return new WaitForSeconds(orderChangeInterval);
+        }
+    }
+
+    public void ShowRandomOrder()
+    {
+        if (orderText != null)
+        {
+            int randomIndex = Random.Range(0, orders.Length);
+            orderText.text = orders[randomIndex];
+            Debug.Log("New random order: " + orders[randomIndex]);
+        }
+        else
+        {
+            Debug.LogWarning("Order Text is not assigned in OrderManager.");
         }
     }
 }
