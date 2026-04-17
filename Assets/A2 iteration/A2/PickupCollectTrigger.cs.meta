@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ae5dc49fcaddb14429b56090e3f3bc9a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - collectPrompt3D: {fileID: 4115594351484257250, guid: a240a599e3757604fbe8ecdc579efd8a, type: 3}
+  - cupPrefab: {fileID: 5365488150483213045, guid: 0bda0959d1c7155498428eea962455ef, type: 3}
+  - spawnPoint: {fileID: 1687811701043645871, guid: a8163213d690fde4c89cddaa9e933d47, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
