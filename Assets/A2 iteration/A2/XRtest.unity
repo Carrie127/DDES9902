@@ -3006,7 +3006,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &643158607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7899,7 +7899,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1952214405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8640,7 +8640,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: -8525429354371678379, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    m_Reference: {fileID: -6493913391331992944, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!114 &2116489343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8655,7 +8655,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.ActionBasedContinuousMoveProvider
   m_Mediator: {fileID: 2116489340}
   m_TransformationPriority: 0
-  m_MoveSpeed: 1
+  m_MoveSpeed: 2
   m_EnableStrafe: 1
   m_EnableFly: 0
   m_UseGravity: 1
@@ -9817,6 +9817,10 @@ PrefabInstance:
     - target: {fileID: 4115594351484257250, guid: a240a599e3757604fbe8ecdc579efd8a, type: 3}
       propertyPath: m_Name
       value: CollectPrompt3D
+      objectReference: {fileID: 0}
+    - target: {fileID: 4115594351484257250, guid: a240a599e3757604fbe8ecdc579efd8a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
